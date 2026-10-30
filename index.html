@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark" data-motion="on">
 <!-- Adapted from luost26/academic-homepage; MIT license retained in LICENSE. -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="我的研究方向为生物信息学与抗菌材料，结合多组学数据分析与细胞、微生物和动物实验，开展发育生物学及抗菌材料相关研究。我于内蒙古大学获得动物学博士学位，并在化学化工学院完成博士后研究。">
-  <meta name="theme-color" content="#f6f7f9">
+  <meta name="theme-color" content="#202322">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="王靖 | 生物信息学与抗菌材料">
   <meta property="og:description" content="我的研究方向为生物信息学与抗菌材料，结合多组学数据分析与细胞、微生物和动物实验，开展发育生物学及抗菌材料相关研究。我于内蒙古大学获得动物学博士学位，并在化学化工学院完成博士后研究。">
@@ -16,24 +16,29 @@
   <link rel="alternate" hreflang="en" href="https://nnlrl.github.io/en.html">
   <link rel="alternate" hreflang="x-default" href="https://nnlrl.github.io/">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <script src="assets/js/theme-init.js?v=20261030-terminal"></script>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=20261030-terminal">
   <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/global.css">
-  <link rel="stylesheet" href="assets/css/homepage.css">
+  <link rel="stylesheet" href="assets/css/homepage.css?v=20261030-terminal">
+  <link rel="stylesheet" href="assets/css/reference-theme.css?v=20261030-terminal">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Jing Wang", "alternateName": "王靖", "url": "https://nnlrl.github.io", "email": "mailto:nnlrl@mail.imu.edu.cn", "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Inner Mongolia University"}, {"@type": "CollegeOrUniversity", "name": "Heilongjiang University of Science and Technology"}], "knowsAbout": ["Bioinformatics", "Multi-omics", "Antimicrobial materials"], "sameAs": ["https://github.com/nnlrl"]}</script>
-  <script defer src="assets/js/homepage.js"></script>
+  <script defer src="assets/js/homepage.js?v=20261030-terminal"></script>
 </head>
 <body class="bg-light d-flex flex-column min-vh-100" id="top">
   <a class="skip-link" href="#main">跳至正文</a>
-  <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm" aria-label="导航菜单">
-    <div class="container-lg">
-      <a class="navbar-brand" href="#top"><strong>王靖</strong><span class="brand-subtitle">Academic Homepage</span></a>
-      <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="导航菜单" id="menu-toggle"><span class="navbar-toggler-icon"></span></button>
-      <div class="navbar-collapse" id="navbarResponsive">
-        <div class="navbar-nav ml-auto"><a class="nav-link" href="#about">关于我</a><a class="nav-link" href="#experience">科研与教育经历</a><a class="nav-link" href="#publications">学术论文</a><a class="nav-link" href="#projects">科研项目</a></div>
+  <div class="stars" aria-hidden="true"></div>
+  <header class="terminal-nav">
+    <a class="terminal-brand" href="#top">JingWang:~/home$</a>
+    <nav class="terminal-links" aria-label="导航菜单">
+      <div class="primary-nav"><a class="nav-link" href="#about">关于</a><a class="nav-link" href="#experience">经历</a><a class="nav-link" href="#publications">论文</a><a class="nav-link" href="#projects">项目</a></div>
+      <div class="nav-controls">
+        <button type="button" id="theme-toggle" aria-pressed="true" aria-label="Switch to day theme">☼ Day</button>
+        <button type="button" id="motion-toggle" aria-pressed="true" aria-label="Toggle animations">Motion on</button>
         <a class="language-switch" href="en.html" lang="en" hreflang="en" aria-label="Switch to English">EN</a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
   <main class="container-lg flex-grow-1" id="main">
     <div class="row homepage-row">
       <aside class="col-lg-3 col-md-4 profile-column" aria-label="个人简介">

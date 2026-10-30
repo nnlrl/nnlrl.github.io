@@ -1,24 +1,62 @@
 /* Progressive enhancement: all profile content is readable without JavaScript. */
 (() => {
-  const toggle = document.querySelector('#menu-toggle');
-  const menu = document.querySelector('#navbarResponsive');
-  const navLinks = [...document.querySelectorAll('.navbar-nav a[href^="#"]')];
+  const root = document.documentElement;
+  const navLinks = [...document.querySelectorAll('.primary-nav a[href^="#"]')];
+  const themeButton = document.querySelector('#theme-toggle');
+  const motionButton = document.querySelector('#motion-toggle');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const save = (key, value) => {
+    try { localStorage.setItem(key, value); } catch { /* Keep the controls usable without storage. */ }
+  };
 
-  function closeMenu() {
-    menu?.classList.remove('is-open');
-    toggle?.setAttribute('aria-expanded', 'false');
+  function setTheme(theme) {
+    const dark = theme === 'dark';
+    root.dataset.theme = theme;
+    themeButton.textContent = dark ? '☼ Day' : '☾ Night';
+    themeButton.setAttribute('aria-pressed', String(dark));
+    themeButton.setAttribute('aria-label', dark ? 'Switch to day theme' : 'Switch to night theme');
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#202322' : '#f6f7f6';
   }
-
-  toggle?.addEventListener('click', () => {
-    const opened = menu.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(opened));
+  setTheme(root.dataset.theme);
+  themeButton.addEventListener('click', () => {
+    setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+    save('jing-wang-theme', root.dataset.theme);
   });
-  navLinks.forEach(link => link.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && menu?.classList.contains('is-open')) {
-      closeMenu();
-      toggle.focus();
-    }
+
+  function setMotion(enabled) {
+    const active = enabled && !reducedMotion.matches;
+    root.dataset.motion = active ? 'on' : 'off';
+    motionButton.textContent = active ? 'Motion on' : 'Motion off';
+    motionButton.setAttribute('aria-pressed', String(active));
+    motionButton.disabled = reducedMotion.matches;
+  }
+  setMotion(root.dataset.motion !== 'off');
+  motionButton.addEventListener('click', () => {
+    setMotion(root.dataset.motion !== 'on');
+    save('jing-wang-motion', root.dataset.motion);
+  });
+  reducedMotion.addEventListener('change', () => setMotion(!reducedMotion.matches));
+
+  // The fixed background uses small opacity-only stars, with no external assets or animation library.
+  const starField = document.querySelector('.stars');
+  const stars = document.createDocumentFragment();
+  let seed = 0x4a57;
+  const random = () => {
+    seed = (1664525 * seed + 1013904223) >>> 0;
+    return seed / 4294967296;
+  };
+  for (let index = 0; index < 192; index++) {
+    const star = document.createElement('i');
+    star.className = 'star';
+    star.style.setProperty('--x', `${(random() * 100).toFixed(3)}%`);
+    star.style.setProperty('--y', `${(random() * 100).toFixed(3)}%`);
+    star.style.setProperty('--duration', `${(4 + random() * 4).toFixed(2)}s`);
+    star.style.setProperty('--delay', `${(-random() * 8).toFixed(2)}s`);
+    stars.append(star);
+  }
+  starField?.append(stars);
+  document.addEventListener('visibilitychange', () => {
+    root.dataset.visibility = document.hidden ? 'hidden' : 'visible';
   });
 
   // Preserve the current section when switching between the static language pages.
@@ -37,15 +75,21 @@
       else link.removeAttribute('aria-current');
     });
   }
-  markActive(window.location.hash.slice(1) || 'about');
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) markActive(entry.target.id);
-      }
-    }, { rootMargin: '-80px 0px -55% 0px', threshold: 0 });
-    document.querySelectorAll('.section-card').forEach(section => observer.observe(section));
+  const sections = [...document.querySelectorAll('.section-card')];
+  let navigationFrame = null;
+  function updateActiveSection() {
+    navigationFrame = null;
+    const readingLine = document.querySelector('.terminal-nav').getBoundingClientRect().bottom + 36;
+    const current = sections.filter(section => section.getBoundingClientRect().top <= readingLine).pop();
+    markActive(current?.id || 'about');
   }
+  function queueNavigationUpdate() {
+    if (navigationFrame === null) navigationFrame = requestAnimationFrame(updateActiveSection);
+  }
+  window.addEventListener('scroll', queueNavigationUpdate, { passive: true });
+  window.addEventListener('resize', queueNavigationUpdate);
+  window.addEventListener('pageshow', queueNavigationUpdate);
+  queueNavigationUpdate();
 
   // Expand the complete publication list for the browser's Print / Save PDF action.
   let previouslyClosed = [];

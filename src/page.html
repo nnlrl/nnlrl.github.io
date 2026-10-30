@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="$page_lang">
+<html lang="$page_lang" data-theme="dark" data-motion="on">
 <!-- Adapted from luost26/academic-homepage; MIT license retained in LICENSE. -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="$description">
-  <meta name="theme-color" content="#f6f7f9">
+  <meta name="theme-color" content="#202322">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="$page_title">
   <meta property="og:description" content="$description">
@@ -16,24 +16,29 @@
   <link rel="alternate" hreflang="en" href="https://nnlrl.github.io/en.html">
   <link rel="alternate" hreflang="x-default" href="https://nnlrl.github.io/">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <script src="assets/js/theme-init.js?v=20261030-terminal"></script>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=20261030-terminal">
   <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/global.css">
-  <link rel="stylesheet" href="assets/css/homepage.css">
+  <link rel="stylesheet" href="assets/css/homepage.css?v=20261030-terminal">
+  <link rel="stylesheet" href="assets/css/reference-theme.css?v=20261030-terminal">
   <script type="application/ld+json">$structured_data</script>
-  <script defer src="assets/js/homepage.js"></script>
+  <script defer src="assets/js/homepage.js?v=20261030-terminal"></script>
 </head>
 <body class="bg-light d-flex flex-column min-vh-100" id="top">
   <a class="skip-link" href="#main">$skip</a>
-  <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm" aria-label="$menu">
-    <div class="container-lg">
-      <a class="navbar-brand" href="#top"><strong>$name</strong><span class="brand-subtitle">Academic Homepage</span></a>
-      <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="$menu" id="menu-toggle"><span class="navbar-toggler-icon"></span></button>
-      <div class="navbar-collapse" id="navbarResponsive">
-        <div class="navbar-nav ml-auto">$nav_links</div>
+  <div class="stars" aria-hidden="true"></div>
+  <header class="terminal-nav">
+    <a class="terminal-brand" href="#top">JingWang:~/home$$</a>
+    <nav class="terminal-links" aria-label="$menu">
+      <div class="primary-nav">$nav_links</div>
+      <div class="nav-controls">
+        <button type="button" id="theme-toggle" aria-pressed="true" aria-label="Switch to day theme">☼ Day</button>
+        <button type="button" id="motion-toggle" aria-pressed="true" aria-label="Toggle animations">Motion on</button>
         <a class="language-switch" href="$switch_file" lang="$switch_lang" hreflang="$switch_lang" aria-label="$switch_description">$switch_label</a>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
   <main class="container-lg flex-grow-1" id="main">
     <div class="row homepage-row">
       <aside class="col-lg-3 col-md-4 profile-column" aria-label="$side_label">

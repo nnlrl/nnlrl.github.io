@@ -1,6 +1,6 @@
 # Jing Wang · 王靖
 
-基于 [luost26/academic-homepage](https://github.com/luost26/academic-homepage) 视觉样式制作的单页学术主页。保留原模板的 Bootstrap 网格、浅灰背景、左侧简介与白色圆角卡片，并参考 [Yiqian Wu 的主页](https://onethousandwu.com/index.html) 安排学术内容。
+基于 [luost26/academic-homepage](https://github.com/luost26/academic-homepage) 制作的单页学术主页，保留原模板的 Bootstrap 网格与左侧简介布局。顶部终端导航、日夜配色、星点背景和字体参照 [Yiqian Wu 的主页](https://onethousandwu.com/index.html)。
 
 免费网址：<https://nnlrl.github.io/>。中文版为 `index.html`，英文版为 `en.html`。
 
@@ -12,7 +12,7 @@
 python3 scripts/build_site.py
 ```
 
-生成的 HTML 直接包含完整正文，关闭 JavaScript 也可以阅读。无 Node、Ruby 或数据库依赖；所有样式均随站点本地提供。
+生成的 HTML 直接包含完整正文，关闭 JavaScript 也可以阅读。无 Node、Ruby 或数据库依赖；样式与字体均随站点本地提供。
 
 ## 本地预览
 
@@ -20,7 +20,7 @@ python3 scripts/build_site.py
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-打开 <http://127.0.0.1:8765/>。页面支持页内导航、中英文切换、展开合作论文和“打印 / 保存 PDF”。
+打开 <http://127.0.0.1:8765/>。页面支持页内导航、中英文切换、日夜主题、背景动效开关、展开合作论文和“打印 / 保存 PDF”。默认夜间主题，日间显示 24px 细网格背景。主题和动效偏好会在当前浏览器保存；系统减少动态效果时关闭动画。
 
 ## GitHub Pages
 
@@ -42,3 +42,15 @@ python3 -m http.server 8765 --bind 127.0.0.1
 `assets/css/global.css` 来自原模板，保留其卡片和导航基础样式。Bootstrap 4.6.0 的发行样式本地存放在 `assets/vendor/bootstrap.min.css`，保留文件头许可声明。站点适配内容保留原模板 MIT 许可和页脚来源链接。
 
 原模板版权：Copyright (c) 2024 Shitong Luo。详见 `LICENSE`。
+
+## 字体与样式参考
+
+2026-10-30 按用户要求匹配参考站的顶部栏、背景和字体：
+
+- 正文：Hanken Grotesk。
+- 主标题：Bricolage Grotesque。
+- 导航和辅助标签：IBM Plex Mono。
+- 经历栏小标题：Special Elite。
+- 中文字形由系统中文字体补充。
+
+字体文件来自参考站公开的 `assets/fonts/`，对应声明见其 `assets/fonts.css?v=18`。字体的 SIL Open Font License 或 Apache-2.0 许可文本随文件保留在 `assets/fonts/`。配色参数参考其 `assets/site.css?v=18`；本站只适配导航、字体和背景，不复制参考站的个人资料、照片或作品。

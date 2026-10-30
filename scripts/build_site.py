@@ -43,8 +43,14 @@ def render(profile, lang):
     def external(url, label, css=""):
         return f'<a class="{css}" href="{escape(url)}" target="_blank" rel="noopener noreferrer">{label}<span class="external-arrow" aria-hidden="true">↗</span></a>'
 
+    nav_labels = {
+        "about": "关于" if zh else "About",
+        "experience": "经历" if zh else "Experience",
+        "publications": "论文" if zh else "Papers",
+        "projects": "项目" if zh else "Projects",
+    }
     nav = "".join(
-        f'<a class="nav-link" href="#{key}">{labels[key]}</a>'
+        f'<a class="nav-link" href="#{key}">{nav_labels[key]}</a>'
         for key in ("about", "experience", "publications", "projects")
     )
     interests = "".join(
