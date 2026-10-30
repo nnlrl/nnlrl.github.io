@@ -1,1 +1,4 @@
-theme: jekyll-theme-minimal
+# Static GitHub Pages site; .nojekyll disables Jekyll processing.
+title: Jing Wang | 王靖
+url: https://nnlrl.github.io
+baseurl: ""

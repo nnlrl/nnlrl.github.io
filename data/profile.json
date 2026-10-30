@@ -1,0 +1,71 @@
+{
+  "name": {"zh": "王靖", "en": "Jing Wang"},
+  "alternate_name": {"zh": "Jing Wang", "en": "王靖"},
+  "email": "nnlrl@mail.imu.edu.cn",
+  "github": "nnlrl",
+  "url": "https://nnlrl.github.io",
+  "updated": "2026-10-30",
+  "role": {"zh": "博士后出站", "en": "Postdoctoral research completed"},
+  "affiliation": {"zh": "内蒙古大学", "en": "Inner Mongolia University"},
+  "field": {"zh": "生物信息学 · 抗菌材料与技术", "en": "Bioinformatics · Antimicrobial Materials"},
+  "intro": {
+    "zh": "我的研究方向为生物信息学与抗菌材料，结合多组学数据分析与细胞、微生物和动物实验，开展发育生物学及抗菌材料相关研究。我于内蒙古大学获得动物学博士学位，并在化学化工学院完成博士后研究。",
+    "en": "My research focuses on bioinformatics and antimicrobial materials, combining multi-omics data analysis with cellular, microbiological and animal experiments. I received my Ph.D. in Zoology from Inner Mongolia University and completed postdoctoral research in its College of Chemistry and Chemical Engineering."
+  },
+  "summary": {
+    "zh": "已发表 SCI 论文 11 篇，其中第一作者 3 篇；主持科研项目 1 项，参与科研项目 2 项。",
+    "en": "I have published 11 SCI-indexed papers, including three as first author, and have led one research project and participated in two others."
+  },
+  "interests": [
+    {
+      "label": {"zh": "生物信息学与多组学", "en": "Bioinformatics & multi-omics"},
+      "text": {"zh": "围绕胚胎干细胞与发育生物学，开展 DNA 甲基化、ChIP-seq、ATAC-seq、RNA-seq 及单细胞转录组分析。", "en": "DNA methylation, ChIP-seq, ATAC-seq, RNA-seq and single-cell transcriptomics in embryonic stem cells and developmental biology."},
+      "tags": ["RNA-seq", "scRNA-seq", "Epigenomics"]
+    },
+    {
+      "label": {"zh": "抗菌材料与生物学评价", "en": "Antimicrobial materials"},
+      "text": {"zh": "抗菌高分子材料研发、自组装体系构建与理化表征，结合细胞、微生物及动物实验开展生物学评价。", "en": "Antimicrobial polymer development, self-assembly and physicochemical characterization, with biological evaluation using cellular, microbiological and animal experiments."},
+      "tags": ["Antimicrobial polymers", "Self-assembly", "Bioevaluation"]
+    }
+  ],
+  "experience": [
+    {"institution": {"zh": "内蒙古大学", "en": "Inner Mongolia University"}, "department": {"zh": "化学化工学院", "en": "College of Chemistry and Chemical Engineering"}, "degree": {"zh": "博士后研究", "en": "Postdoctoral Research"}, "date": "2024 – 2026"}
+  ],
+  "education": [
+    {"institution": {"zh": "内蒙古大学", "en": "Inner Mongolia University"}, "department": {"zh": "生命科学学院", "en": "School of Life Sciences"}, "degree": {"zh": "动物学博士 · 硕博连读", "en": "Ph.D. in Zoology · Integrated M.Sc./Ph.D."}, "date": "2018 – 2023"},
+    {"institution": {"zh": "黑龙江科技大学", "en": "Heilongjiang University of Science and Technology"}, "department": {"zh": "理学院", "en": "School of Science"}, "degree": {"zh": "理学学士", "en": "Bachelor of Science"}, "date": "2014 – 2018"}
+  ],
+  "publications": [
+    {"title": "Epigenetic basis for the establishment of ruminal tissue-specific functions in bovine fetuses and adults", "authors": "Jing Wang; Wen Yuan; Fang Liu; Guangbo Liu; Xiaoxiong Geng; Chen Li; Chenchen Zhang; Nan Li; Xueling Li", "journal": "Journal of Genetics and Genomics", "year": 2025, "citation": "52(1): 78–92", "first_author": true, "doi": "10.1016/j.jgg.2024.10.008", "note": {"zh": "牛胎儿与成年组织的多组学与表观遗传学研究。", "en": "Multi-omics and epigenetic analysis of fetal and adult bovine tissues."}},
+    {"title": "Whole-genome methylation reveals tissue-specific differences in non-CG methylation in bovine", "authors": "Jing Wang; Wen Yuan; Fang Liu; Guangbo Liu; Xiaoxiong Geng; Chen Li; Chenchen Zhang; Nan Li; Xueling Li", "journal": "Zoological Research", "year": 2024, "citation": "45(6): 1371–1384", "first_author": true, "doi": "10.24272/j.issn.2095-8137.2024.221", "note": {"zh": "牛不同组织与细胞中非 CG 甲基化的分布及差异。", "en": "Distribution and tissue-specific differences of non-CG methylation in bovine tissues and cells."}},
+    {"title": "Construction of a Competitive Endogenous RNA Network for Pancreatic Adenocarcinoma Based on Weighted Gene Co-expression Network Analysis and a Prognosis Model", "authors": "Wang J; Xiang J; Li X", "journal": "Frontiers in Bioengineering and Biotechnology", "year": 2020, "citation": "8: 515", "first_author": true, "doi": "10.3389/fbioe.2020.00515", "note": {"zh": "结合 WGCNA 构建胰腺癌 ceRNA 网络与预后模型。", "en": "WGCNA-based ceRNA network construction and prognostic modeling for pancreatic adenocarcinoma."}},
+    {"title": "miR-375 Promotes Pancreatic Differentiation In Vitro by Affecting Different Target Genes at Different Stages", "authors": "Lu Z; Wang J; Wang X; et al.", "journal": "Stem Cells International", "year": 2021, "citation": "2021: 6642983", "first_author": false},
+    {"title": "Exogenous pyruvate and recombinant human basic fibroblast growth factor maintain pluripotency and enhance global metabolic activity of bovine embryonic stem cells grown on low-density feeder layers", "authors": "Xu W; Wang J; Li W; et al.", "journal": "Theriogenology", "year": 2023, "citation": "196: 37–49", "first_author": false},
+    {"title": "Methanol fixed feeder layers altered the pluripotency and metabolism of bovine pluripotent stem cells", "authors": "Xu W; Hao R; Wang J; et al.", "journal": "Scientific Reports", "year": 2022, "citation": "12(1): 9177", "first_author": false},
+    {"title": "Effects of LPA on the development of sheep in vitro fertilized embryos and attempt to establish sheep embryonic stem cells", "authors": "Zhang X-M; Huang X-H; Wang J; et al.", "journal": "Journal of Integrative Agriculture", "year": 2023, "citation": "22(4): 1142–1158", "first_author": false},
+    {"title": "MLL1 combined with GSK3 and MAP2K inhibition improves the development of in vitro-fertilized embryo", "authors": "Han X; Xiang J; Li C; Wang J; et al.", "journal": "Theriogenology", "year": 2020, "citation": "146: 58–70", "first_author": false},
+    {"title": "LCDM medium supports the derivation of bovine extended pluripotent stem cells with embryonic and extraembryonic potency in bovine-mouse chimeras from iPSCs and bovine fetal fibroblasts", "authors": "Xiang J; Wang H; Zhang Y; Wang J; et al.", "journal": "The FEBS Journal", "year": 2021, "citation": "288(14): 4394–4411", "first_author": false},
+    {"title": "The adaptation of bovine embryonic stem cells to the changes of feeder layers", "authors": "Xu W; Gao L; Li W; Wang J; et al.", "journal": "In Vitro Cellular & Developmental Biology - Animal", "year": 2023, "citation": "59(2): 85–99", "first_author": false},
+    {"title": "Fatty acid metabolism as an indicator for the maternal-to-zygotic transition in porcine IVF embryos revealed by RNA sequencing", "authors": "Xiang J; Xing Y; Long C; Hou D; Liu F; Zhang Y; Lu Z; Wang J; et al.", "journal": "Theriogenology", "year": 2020, "citation": "151: 128–136", "first_author": false}
+  ],
+  "projects": [
+    {"title": {"zh": "利用单细胞测序技术筛选牛雄性生殖细胞发育过程的物种特异性标记基因", "en": "Identifying species-specific markers during bovine male germ cell development using single-cell sequencing"}, "role": {"zh": "主持", "en": "Principal investigator"}, "funder": {"zh": "内蒙古自治区自然科学基金", "en": "Natural Science Foundation of Inner Mongolia"}, "date": "2025.07 – 2028.06", "amount": {"zh": "10 万元", "en": "CNY 100,000"}},
+    {"title": {"zh": "利用 PLZF 报告系统建立牛 EPSCs 诱导形成 SSCs 的高效分化体系", "en": "Establishing an efficient differentiation system for bovine EPSCs into SSCs using a PLZF reporter"}, "role": {"zh": "参与", "en": "Participant"}, "funder": {"zh": "国家自然科学基金地区科学基金项目", "en": "National Natural Science Foundation of China, Regional Program"}, "date": "2022.01 – 2025.12", "amount": {"zh": "34 万元", "en": "CNY 340,000"}},
+    {"title": {"zh": "小鼠红系祖细胞 BFU-E 分离与培养体系建立", "en": "Establishing isolation and culture systems for mouse erythroid progenitor BFU-E cells"}, "role": {"zh": "参与", "en": "Participant"}, "funder": {"zh": "内蒙古自治区自然科学基金", "en": "Natural Science Foundation of Inner Mongolia"}, "date": "2024.01 – 2026.12", "amount": {"zh": "10 万元", "en": "CNY 100,000"}}
+  ],
+  "patents": [
+    {"title": {"zh": "一种应用 NaCl 提高人胚胎干细胞多能性的培养体系及培养方法", "en": "A culture system and method using NaCl to enhance the pluripotency of human embryonic stem cells"}, "inventors": {"zh": "李雪玲；李紫洪；李伟；王靖；岳永莉", "en": "Xueling Li; Zihong Li; Wei Li; Jing Wang; Yongli Yue"}, "number": "CN202410367412.2", "date": "2024.03.28"},
+    {"title": {"zh": "一种应用乳酸钙提高人胚胎干细胞多能性的培养体系及培养方法", "en": "A culture system and method using calcium lactate to enhance the pluripotency of human embryonic stem cells"}, "inventors": {"zh": "李雪玲；李紫洪；李伟；王靖；岳永莉", "en": "Xueling Li; Zihong Li; Wei Li; Jing Wang; Yongli Yue"}, "number": "CN202410367180.0", "date": "2024.03.28"}
+  ],
+  "skills": [
+    {"title": {"zh": "组学分析与计算建模", "en": "Omics analysis & computational modeling"}, "text": {"zh": "转录组、单细胞转录组及表观基因组分析，多组学数据整合；机器学习模型训练与微调、分子对接及分子动力学模拟。", "en": "Transcriptomic, single-cell transcriptomic and epigenomic analysis; multi-omics integration; machine learning model training and fine-tuning; molecular docking and molecular dynamics simulations."}},
+    {"title": {"zh": "材料制备与表征", "en": "Materials preparation & characterization"}, "text": {"zh": "抗菌高分子材料合成、自组装体系构建；TEM、SEM、NMR、FT-IR、XPS、GPC、DLS 等理化性质表征。", "en": "Antimicrobial polymer synthesis and self-assembly; characterization using TEM, SEM, NMR, FT-IR, XPS, GPC and DLS."}},
+    {"title": {"zh": "生物学实验", "en": "Biological experiments"}, "text": {"zh": "细胞生物学、分子生物学与微生物实验，动物感染模型构建及药效评价。", "en": "Cell biology, molecular biology and microbiology experiments; animal infection models and efficacy evaluation."}}
+  ],
+  "awards": [
+    {"name": {"zh": "国家奖学金", "en": "National Scholarship"}, "year": 2022},
+    {"name": {"zh": "自治区奖学金", "en": "Inner Mongolia Autonomous Region Scholarship"}, "year": 2020},
+    {"name": {"zh": "自治区奖学金", "en": "Inner Mongolia Autonomous Region Scholarship"}, "year": 2019}
+  ],
+  "language": {"zh": "大学英语六级 · CET-6", "en": "College English Test Band 6 · CET-6"}
+}

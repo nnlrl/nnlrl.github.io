@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="$page_lang">
+<!-- Adapted from luost26/academic-homepage; MIT license retained in LICENSE. -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="$description">
+  <meta name="theme-color" content="#f6f7f9">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="$page_title">
+  <meta property="og:description" content="$description">
+  <meta property="og:url" content="$canonical">
+  <title>$page_title</title>
+  <link rel="canonical" href="$canonical">
+  <link rel="alternate" hreflang="zh-CN" href="https://nnlrl.github.io/">
+  <link rel="alternate" hreflang="en" href="https://nnlrl.github.io/en.html">
+  <link rel="alternate" hreflang="x-default" href="https://nnlrl.github.io/">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/homepage.css">
+  <script type="application/ld+json">$structured_data</script>
+  <script defer src="assets/js/homepage.js"></script>
+</head>
+<body class="bg-light d-flex flex-column min-vh-100" id="top">
+  <a class="skip-link" href="#main">$skip</a>
+  <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm" aria-label="$menu">
+    <div class="container-lg">
+      <a class="navbar-brand" href="#top"><strong>$name</strong><span class="brand-subtitle">Academic Homepage</span></a>
+      <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="$menu" id="menu-toggle"><span class="navbar-toggler-icon"></span></button>
+      <div class="navbar-collapse" id="navbarResponsive">
+        <div class="navbar-nav ml-auto">$nav_links</div>
+        <a class="language-switch" href="$switch_file" lang="$switch_lang" hreflang="$switch_lang" aria-label="$switch_description">$switch_label</a>
+      </div>
+    </div>
+  </nav>
+  <main class="container-lg flex-grow-1" id="main">
+    <div class="row homepage-row">
+      <aside class="col-lg-3 col-md-4 profile-column" aria-label="$side_label">
+        <div class="profile-sticky">
+          <section class="card border-0 shadow-sm bg-white profile-card">
+            <div class="card-body p-4 text-center">
+              <div class="profile-monogram" aria-hidden="true">JW</div>
+              <h1>$name</h1>
+              <p class="alternate-name">$alternate_name</p>
+              <p class="profile-position">$role<br>$affiliation</p>
+              <p class="profile-field">$field</p>
+              <div class="profile-contact">
+                <a class="email-link" href="mailto:$email">$email</a>
+                <a class="github-link" href="https://github.com/$github" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.6 11.6 0 0 0-3.7 22.6c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.4-1.3-5.4-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.8 5.5-5.4 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.6 11.6 0 0 0 12 .7Z"/></svg> GitHub <span aria-hidden="true">↗</span></a>
+              </div>
+              <button class="btn btn-outline-primary btn-sm print-button" type="button" data-print>$print_label</button>
+            </div>
+          </section>
+          <section class="sidebar-interests">
+            <h2>$research_label</h2>
+            <ul>$sidebar_interests</ul>
+            <a href="#contact">$sidebar_contact <span aria-hidden="true">→</span></a>
+          </section>
+        </div>
+      </aside>
+      <div class="col-lg-9 col-md-8 main-column">$content</div>
+    </div>
+  </main>
+  <footer class="footer flex-shrink-0 border-top bg-white">
+    <div class="container-lg footer-content">
+      <p>© $year $name <span class="meta-separator">·</span> $updated</p>
+      <div><span>$template_credit <a href="https://github.com/luost26/academic-homepage" target="_blank" rel="noopener noreferrer">academic-homepage</a></span><a class="back-top" href="#top">$back_top ↑</a></div>
+    </div>
+  </footer>
+</body>
+</html>
