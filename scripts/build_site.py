@@ -28,7 +28,7 @@ def render(data, lang):
         ('about','概况','About'), ('experience','经历','Experience'),
         ('publications','论文','Papers'), ('projects','项目','Projects'), ('contact','联系','Contact')
     ])
-    counterpart = 'en.html' if zh else 'index.html'
+    counterpart = 'index.html' if zh else 'zh.html'
     mail = e(data['email'])
     role = t(data['role'])
     # The decorative motif represents two research areas, not quantitative data.
@@ -80,7 +80,7 @@ def render(data, lang):
     awards += ''.join(f'<li><span>{t(item["name"])}</span><span class="date">{item["year"]}</span></li>' for item in data['awards'])+'</ul></section>'
     contact = f'''<section class="block contact" id="contact" aria-labelledby="contact-title"><div class="section-heading"><h2 id="contact-title">{label('保持联系','Get in touch')}</h2></div><p>{label('欢迎就生物信息学、抗菌材料相关研究及教学科研岗位与我联系。','For research collaborations in bioinformatics and antimicrobial materials, or teaching and research opportunities, please contact me by email.')}</p><a class="contact-link" href="mailto:{mail}">{mail}</a></section>'''
     content = about + experience + publications + projects + patents + skills + awards + contact
-    canonical = data['url'] + ('/' if zh else '/en.html')
+    canonical = data['url'] + ('/zh.html' if zh else '/')
     page_title = label('王靖 | 生物信息学与抗菌材料', 'Jing Wang | Bioinformatics & Antimicrobial Materials')
     person = {
         '@context': 'https://schema.org', '@type': 'Person',
@@ -109,17 +109,17 @@ def render(data, lang):
 
 def main():
     profile = json.loads((ROOT / 'data/profile.json').read_text())
-    for language, filename in [('zh', 'index.html'), ('en', 'en.html')]:
+    for language, filename in [('en', 'index.html'), ('en', 'en.html'), ('zh', 'zh.html')]:
         (ROOT / filename).write_text(render(profile, language))
     base = profile['url']
     (ROOT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n')
     (ROOT / 'sitemap.xml').write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + ''.join(f'<url><loc>{base}/{page}</loc><lastmod>{profile["updated"]}</lastmod></url>\n' for page in ['', 'en.html'])
+        + ''.join(f'<url><loc>{base}/{page}</loc><lastmod>{profile["updated"]}</lastmod></url>\n' for page in ['', 'zh.html'])
         + '</urlset>\n'
     )
-    print('Built index.html and en.html: 11 publications, 3 projects, 2 patents.')
+    print('Built English index.html, en.html alias and Chinese zh.html: 11 publications, 3 projects, 2 patents.')
 
 
 if __name__ == '__main__':

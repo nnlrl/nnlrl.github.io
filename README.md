@@ -1,8 +1,8 @@
 # Jing Wang · 王靖
 
-基于 [luost26/academic-homepage](https://github.com/luost26/academic-homepage) 定制的单页学术主页。使用用户选定的孟菲斯风格，奶白底色搭配黄色、珊瑚粉、薄荷绿与几何装饰；顶栏使用带 Home 标记的黄色文件夹。
+基于 [luost26/academic-homepage](https://github.com/luost26/academic-homepage) 定制的单页学术主页。使用用户选定的孟菲斯风格，奶白底色搭配黄色、珊瑚粉、薄荷绿与几何装饰；顶栏使用带 Home 标记的黄色文件夹。大区块统一左上圆角和右下投影；嵌套小框使用左上与右下圆角、2px 虚线边框，无投影。
 
-免费网址：<https://nnlrl.github.io/>。中文版为 `index.html`，英文版为 `en.html`。
+免费网址：<https://nnlrl.github.io/>。默认首页 `index.html` 为英文，中文版为 `zh.html`；`en.html` 保留为英文兼容入口。
 
 ## 维护内容
 
@@ -46,7 +46,9 @@ python3 -m http.server 8765 --bind 127.0.0.1
 ## 字体
 
 - 正文：Hanken Grotesk。
-- 主标题：Bricolage Grotesque。
+- 主标题与论文标题：Bricolage Grotesque。
+- 章节标题：Special Elite。
+- 导航、日期与辅助标签：IBM Plex Mono。
 - 中文字形由系统中文字体补充。
 
 字体在站点本地提供，文件来自此前参考的 [Yiqian Wu 主页](https://onethousandwu.com/index.html) 公开字体目录。字体许可文本随文件保留在 `assets/fonts/`。旧版样式和设计 demo 仍留在本地供参考，正式页面不加载它们。

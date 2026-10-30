@@ -1,22 +1,24 @@
-:root { --text:#22283a; --muted:#515769; --blue:#2148cf; --pink:#ffc7d5; --yellow:#ffdf67; --mint:#b8e5d7; --line:#242a3b; }
-body { background:#fbfaf7; font-family:"Hanken Grotesk","PingFang SC","Microsoft YaHei",sans-serif; }
-h1,h2,h3,dt { font-family:"Bricolage Grotesque","Hanken Grotesk","PingFang SC","Microsoft YaHei",sans-serif; }
-.topbar { background:#fbfaf7f5; border-bottom:2px solid var(--line); }
+:root { --text:#22283a; --muted:#515769; --blue:#2148cf; --pink:#ffc7d5; --yellow:#ffdf67; --mint:#b8e5d7; --line:#242a3b; --panel-radius:22px 0 0 0; --nested-radius:12px 0 12px 0; --reading-font:"Hanken Grotesk",Arial,"PingFang SC","Microsoft YaHei",sans-serif; --heading-font:"Bricolage Grotesque","Hanken Grotesk","PingFang SC","Microsoft YaHei",sans-serif; --mono-font:"IBM Plex Mono","PingFang SC","Microsoft YaHei",monospace; --section-font:"Special Elite","Courier New","PingFang SC","Microsoft YaHei",monospace; }
+body { background:#fbfaf7; font-family:var(--reading-font); line-height:1.6; }
+h1,h2,h3,dt { font-family:var(--heading-font); font-weight:500; }
+.topbar,.identity-role,.side-note,.career-date,.date,.career-type,.heading-note,.paper-year,.paper-links,.project-role,.more-papers>summary { font-family:var(--mono-font); }
+.topbar { background:#fbfaf7; border-bottom:2px solid var(--line); }
 .home-link { color:var(--text); }
 .page-nav a { font-weight:600; position:relative; }
 .page-nav a[aria-current]::after { content:""; position:absolute; height:4px; left:0; right:0; bottom:4px; background:var(--pink); border-radius:9px; }
 .language-link { background:var(--yellow); border:1.5px solid var(--line); border-radius:50%; min-width:38px; min-height:38px; margin-left:4px; font-size:12px; }
 .page-grid { gap:35px; }
-.identity { background:var(--yellow); border:2px solid var(--line); border-radius:0 30px 0 0; padding:29px 26px 90px; box-shadow:7px 7px 0 var(--line); }
-.identity-role { display:inline-flex; background:#fbfaf7; border:1.5px solid var(--line); padding:5px 10px; font-size:13px; transform:rotate(-3deg); margin-bottom:30px; }
+.identity { background:var(--yellow); border:2px solid var(--line); border-radius:var(--panel-radius); padding:29px 26px 90px; box-shadow:7px 7px 0 var(--line); }
+.identity-role { display:inline-flex; align-items:center; background:#fbfaf7; padding:7px 10px; font-size:12px; line-height:1.5; margin-bottom:30px; }
 .identity h1 { font-size:72px; letter-spacing:-.055em; }
-.other-name { font-family:"Bricolage Grotesque",sans-serif; font-size:29px; font-weight:700; }
+html[lang="en"] .identity h1 { font-size:52px; font-weight:500; letter-spacing:-.035em; }
+.other-name { font-family:var(--reading-font); font-size:27px; font-weight:500; }
 .identity-rule { background:var(--line); height:2px; margin:23px 0; }
 .identity-field { font-size:17px; }
 .identity-institution { margin-bottom:20px; }
 .identity-links a { font-weight:600; font-size:14px; }
-.print-button { border:2px solid var(--line); background:var(--blue); color:white; border-radius:0; box-shadow:3px 3px 0 var(--line); }
-.print-button:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--line); }
+.print-button { background:var(--blue); color:white; }
+.print-button:hover { background:#193caf; }
 .side-note { margin-left:4px; padding-top:35px; }
 .side-note h2 { font-size:16px; font-weight:700; }
 .side-note>a { color:var(--blue); font-weight:600; }
@@ -25,33 +27,35 @@ h1,h2,h3,dt { font-family:"Bricolage Grotesque","Hanken Grotesk","PingFang SC","
 .art-dots { width:53px; height:49px; background-image:radial-gradient(var(--text) 1.5px,transparent 1.5px); background-size:9px 9px; position:absolute; left:11px; bottom:-3px; transform:rotate(12deg); }
 .art-wave { width:120px; height:28px; position:absolute; color:var(--text); bottom:13px; left:70px; }
 .art-pill { width:45px; height:16px; background:var(--pink); border:2px solid var(--text); border-radius:10px; position:absolute; top:8px; right:60px; transform:rotate(-36deg); }
-.block { border:2px solid var(--line); border-radius:0; padding:27px 29px; box-shadow:5px 5px 0 #242a3b; }
-.section-heading { margin-bottom:20px; }
-.section-heading h2 { font-weight:700; font-size:25px; }
-.about { position:relative; background:#fff; border-radius:22px 0 0 0; }
+.block { border:2px solid var(--line); border-radius:var(--panel-radius); padding:27px 29px; box-shadow:5px 5px 0 var(--line); }
+.section-heading { margin-bottom:20px; align-items:center; flex-wrap:wrap; }
+.section-heading h2 { font-family:var(--section-font); font-weight:400; font-size:25px; letter-spacing:0; }
+.about { position:relative; background:#fff; }
 .small-mark { width:28px; height:28px; border-radius:50%; border:7px solid var(--pink); display:block; flex:none; }
 .intro { font-size:17px; }
 .summary { margin-bottom:23px; }
 .research-grid { gap:16px; }
-.research-area { padding:16px 17px; border:1.5px solid var(--line); background:var(--pink); border-radius:0 16px 0 0; }
-.research-area:nth-child(2) { background:var(--mint); border-radius:0 0 0 16px; }
-.research-area h3 { font-size:16px; }
+.research-area { padding:16px 17px; background:var(--pink); }
+.research-area:nth-child(2) { background:var(--mint); }
+.research-area h3 { font-size:16px; font-weight:500; }
 .research-area p { color:#343b4d; font-size:14px; line-height:1.75; }
 .experience { background:var(--mint); }
 .career-row { border-bottom:1px solid #242a3b50; padding:15px 0; }
 .career-row:first-child { padding-top:1px; }
 .career-row:last-child { border-bottom:0; padding-bottom:0; }
 .career-date { font-weight:600; }
-.career-description h3 { font-size:17px; }
-.career-type { display:inline-block; padding:2px 7px; background:#fff9; border:1px solid #242a3b55; border-radius:4px; font-size:12px; }
+.career-row { grid-template-columns:108px minmax(0,1fr) max-content; gap:16px; }
+.career-description h3 { font-family:var(--reading-font); font-size:17px; font-weight:600; }
+.career-type { display:inline-flex; align-items:center; justify-content:center; justify-self:end; align-self:start; min-width:88px; padding:5px 9px; background:#fff9; font-size:12px; line-height:1.4; text-align:center; white-space:nowrap; }
 .publications { background:#fff; }
-.heading-note { color:var(--muted); background:var(--yellow); padding:3px 8px; border:1px solid var(--line); transform:rotate(2deg); font-size:12px; }
+.heading-note { color:var(--muted); background:var(--yellow); padding:5px 9px; font-size:12px; line-height:1.5; }
 .paper { border-bottom:1px solid #242a3b35; }
 .paper:first-of-type { padding-top:1px; }
 .paper:last-child { border-bottom:0; }
 .paper-year { color:var(--blue); }
+.paper-body h3 { font-weight:500; }
 .paper-title { color:var(--text); }
-.first-author { background:var(--pink); border:1px solid #242a3b80; padding:2px 7px; }
+.first-author { background:var(--pink); padding:4px 8px; }
 .resource { color:var(--blue); font-weight:600; }
 .more-papers { border-top:2px solid var(--line); }
 .more-papers>summary { font-weight:600; padding-top:9px; }
@@ -59,15 +63,37 @@ h1,h2,h3,dt { font-family:"Bricolage Grotesque","Hanken Grotesk","PingFang SC","
 .project { border-top:1px solid #242a3b45; }
 .project:first-child { border-top:0; padding-top:0; }
 .project:last-child { padding-bottom:0; }
-.project-role { background:var(--pink); border:1px solid var(--line); padding:3px 8px; }
+.project-role { background:var(--pink); padding:4px 8px; }
+.identity-role,.research-area,.career-type,.heading-note,.first-author,.project-role,.print-button { border:2px dashed var(--line); border-radius:var(--nested-radius); box-shadow:none; }
 .patents { background:#fff; }
 .patent-list li::marker { color:var(--blue); font-weight:700; }
 .skills { background:#f8e6ed; }
 .awards { background:#fff; }
 .awards li { border-bottom:1px solid #242a3b35; }
 .awards li:last-child { border-bottom:0; }
-.contact { color:white; background:var(--blue); position:relative; border-radius:0 0 22px 0; }
+.contact { color:white; background:var(--blue); position:relative; }
 .contact .contact-link { display:inline-block; text-decoration-thickness:1px; }
 .page-footer { border-top:2px solid var(--line); }
-@media(max-width:1050px) { .identity { padding-inline:22px; } .identity h1 { font-size:64px; } .block { padding:24px; } .career-type { display:none; } }
-@media(max-width:760px) { .page-grid { gap:30px; } .identity { padding:27px 25px 83px; box-shadow:5px 5px 0 var(--line); } .identity-role { margin-bottom:20px; } .identity h1 { font-size:67px; } .other-name { margin-bottom:18px; } .identity-rule { margin:20px 0; } .identity-institution { margin-bottom:15px; } .identity-field { font-size:18px; max-width:250px; } .print-button { max-width:100%; margin-top:21px; } .block { padding:24px 21px; box-shadow:4px 4px 0 var(--line); } .section-heading h2 { font-size:23px; } .research-area p { font-size:15px; } .research-grid { gap:15px; } .heading-note { font-size:12px; } .paper { grid-template-columns:1fr; gap:8px; } .paper-year { font-size:13px; } .career-row { gap:7px; } .contact-link { font-size:17px; } }
+@media(max-width:1050px) {
+  .identity { padding-inline:22px; }
+  .identity h1 { font-size:64px; }
+  html[lang="en"] .identity h1 { font-size:46px; }
+  .block { padding:24px; }
+  .career-row { grid-template-columns:minmax(0,1fr) max-content; gap:10px 16px; }
+  .career-date { grid-column:1; grid-row:1; align-self:center; }
+  .career-description { grid-column:1 / -1; grid-row:2; }
+  .career-type { display:inline-flex; grid-column:2; grid-row:1; }
+}
+@media(max-width:760px) { .page-grid { gap:30px; } .identity { padding:27px 25px 83px; box-shadow:5px 5px 0 var(--line); } .identity-role { margin-bottom:20px; } .identity h1 { font-size:67px; } html[lang="en"] .identity h1 { font-size:clamp(42px,14vw,56px); } .other-name { margin-bottom:18px; } .identity-rule { margin:20px 0; } .identity-institution { margin-bottom:15px; } .identity-field { font-size:18px; max-width:250px; } .print-button { max-width:100%; margin-top:21px; } .block { padding:24px 21px; box-shadow:4px 4px 0 var(--line); } .section-heading h2 { font-size:23px; } .research-area p { font-size:15px; } .research-grid { gap:15px; } .heading-note { font-size:12px; } .paper { grid-template-columns:1fr; gap:8px; } .paper-year { font-size:13px; } .career-row { gap:7px; } .contact-link { font-size:17px; } }
+
+@media(max-width:400px) {
+  .page-nav { gap:6px; }
+  .page-nav a { font-size:12px; }
+}
+@media(max-width:359px) {
+  .topbar-inner { padding-inline:14px; }
+  .page-nav { gap:4px; }
+  .page-grid { padding-inline:16px; }
+  .identity { padding-inline:21px; }
+  .block { padding-inline:18px; }
+}
