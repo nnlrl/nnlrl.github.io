@@ -1,0 +1,73 @@
+:root { --text:#22283a; --muted:#515769; --blue:#2148cf; --pink:#ffc7d5; --yellow:#ffdf67; --mint:#b8e5d7; --line:#242a3b; }
+body { background:#fbfaf7; font-family:"Hanken Grotesk","PingFang SC","Microsoft YaHei",sans-serif; }
+h1,h2,h3,dt { font-family:"Bricolage Grotesque","Hanken Grotesk","PingFang SC","Microsoft YaHei",sans-serif; }
+.topbar { background:#fbfaf7f5; border-bottom:2px solid var(--line); }
+.home-link { color:var(--text); }
+.page-nav a { font-weight:600; position:relative; }
+.page-nav a[aria-current]::after { content:""; position:absolute; height:4px; left:0; right:0; bottom:4px; background:var(--pink); border-radius:9px; }
+.language-link { background:var(--yellow); border:1.5px solid var(--line); border-radius:50%; min-width:38px; min-height:38px; margin-left:4px; font-size:12px; }
+.page-grid { gap:35px; }
+.identity { background:var(--yellow); border:2px solid var(--line); border-radius:0 30px 0 0; padding:29px 26px 90px; box-shadow:7px 7px 0 var(--line); }
+.identity-role { display:inline-flex; background:#fbfaf7; border:1.5px solid var(--line); padding:5px 10px; font-size:13px; transform:rotate(-3deg); margin-bottom:30px; }
+.identity h1 { font-size:72px; letter-spacing:-.055em; }
+.other-name { font-family:"Bricolage Grotesque",sans-serif; font-size:29px; font-weight:700; }
+.identity-rule { background:var(--line); height:2px; margin:23px 0; }
+.identity-field { font-size:17px; }
+.identity-institution { margin-bottom:20px; }
+.identity-links a { font-weight:600; font-size:14px; }
+.print-button { border:2px solid var(--line); background:var(--blue); color:white; border-radius:0; box-shadow:3px 3px 0 var(--line); }
+.print-button:hover { transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--line); }
+.side-note { margin-left:4px; padding-top:35px; }
+.side-note h2 { font-size:16px; font-weight:700; }
+.side-note>a { color:var(--blue); font-weight:600; }
+.memphis-art { display:block; position:absolute; bottom:0; left:0; right:0; height:73px; overflow:hidden; pointer-events:none; }
+.art-circle { width:58px; height:58px; border:13px solid var(--blue); border-radius:50%; position:absolute; right:-8px; bottom:-9px; }
+.art-dots { width:53px; height:49px; background-image:radial-gradient(var(--text) 1.5px,transparent 1.5px); background-size:9px 9px; position:absolute; left:11px; bottom:-3px; transform:rotate(12deg); }
+.art-wave { width:120px; height:28px; position:absolute; color:var(--text); bottom:13px; left:70px; }
+.art-pill { width:45px; height:16px; background:var(--pink); border:2px solid var(--text); border-radius:10px; position:absolute; top:8px; right:60px; transform:rotate(-36deg); }
+.block { border:2px solid var(--line); border-radius:0; padding:27px 29px; box-shadow:5px 5px 0 #242a3b; }
+.section-heading { margin-bottom:20px; }
+.section-heading h2 { font-weight:700; font-size:25px; }
+.about { position:relative; background:#fff; border-radius:22px 0 0 0; }
+.small-mark { width:28px; height:28px; border-radius:50%; border:7px solid var(--pink); display:block; flex:none; }
+.intro { font-size:17px; }
+.summary { margin-bottom:23px; }
+.research-grid { gap:16px; }
+.research-area { padding:16px 17px; border:1.5px solid var(--line); background:var(--pink); border-radius:0 16px 0 0; }
+.research-area:nth-child(2) { background:var(--mint); border-radius:0 0 0 16px; }
+.research-area h3 { font-size:16px; }
+.research-area p { color:#343b4d; font-size:14px; line-height:1.75; }
+.experience { background:var(--mint); }
+.career-row { border-bottom:1px solid #242a3b50; padding:15px 0; }
+.career-row:first-child { padding-top:1px; }
+.career-row:last-child { border-bottom:0; padding-bottom:0; }
+.career-date { font-weight:600; }
+.career-description h3 { font-size:17px; }
+.career-type { display:inline-block; padding:2px 7px; background:#fff9; border:1px solid #242a3b55; border-radius:4px; font-size:12px; }
+.publications { background:#fff; }
+.heading-note { color:var(--muted); background:var(--yellow); padding:3px 8px; border:1px solid var(--line); transform:rotate(2deg); font-size:12px; }
+.paper { border-bottom:1px solid #242a3b35; }
+.paper:first-of-type { padding-top:1px; }
+.paper:last-child { border-bottom:0; }
+.paper-year { color:var(--blue); }
+.paper-title { color:var(--text); }
+.first-author { background:var(--pink); border:1px solid #242a3b80; padding:2px 7px; }
+.resource { color:var(--blue); font-weight:600; }
+.more-papers { border-top:2px solid var(--line); }
+.more-papers>summary { font-weight:600; padding-top:9px; }
+.projects { background:#fff2d1; }
+.project { border-top:1px solid #242a3b45; }
+.project:first-child { border-top:0; padding-top:0; }
+.project:last-child { padding-bottom:0; }
+.project-role { background:var(--pink); border:1px solid var(--line); padding:3px 8px; }
+.patents { background:#fff; }
+.patent-list li::marker { color:var(--blue); font-weight:700; }
+.skills { background:#f8e6ed; }
+.awards { background:#fff; }
+.awards li { border-bottom:1px solid #242a3b35; }
+.awards li:last-child { border-bottom:0; }
+.contact { color:white; background:var(--blue); position:relative; border-radius:0 0 22px 0; }
+.contact .contact-link { display:inline-block; text-decoration-thickness:1px; }
+.page-footer { border-top:2px solid var(--line); }
+@media(max-width:1050px) { .identity { padding-inline:22px; } .identity h1 { font-size:64px; } .block { padding:24px; } .career-type { display:none; } }
+@media(max-width:760px) { .page-grid { gap:30px; } .identity { padding:27px 25px 83px; box-shadow:5px 5px 0 var(--line); } .identity-role { margin-bottom:20px; } .identity h1 { font-size:67px; } .other-name { margin-bottom:18px; } .identity-rule { margin:20px 0; } .identity-institution { margin-bottom:15px; } .identity-field { font-size:18px; max-width:250px; } .print-button { max-width:100%; margin-top:21px; } .block { padding:24px 21px; box-shadow:4px 4px 0 var(--line); } .section-heading h2 { font-size:23px; } .research-area p { font-size:15px; } .research-grid { gap:15px; } .heading-note { font-size:12px; } .paper { grid-template-columns:1fr; gap:8px; } .paper-year { font-size:13px; } .career-row { gap:7px; } .contact-link { font-size:17px; } }

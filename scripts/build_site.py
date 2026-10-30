@@ -1,203 +1,109 @@
 #!/usr/bin/env python3
-"""Render the bilingual, dependency-free static homepage from profile.json."""
-
+"""Render the bilingual Memphis homepage from profile.json."""
 import html
 import json
-import re
 from pathlib import Path
 from string import Template
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
+HOME = '<span class="folder-icon" aria-hidden="true"><img src="assets/images/home-folder-yellow.svg?v=20261030-memphis" alt="" width="32" height="32"></span>'
 
 
-def escape(value):
+def e(value):
     return html.escape(str(value), quote=True)
 
 
-def render(profile, lang):
-    def text(value):
-        return escape(value[lang] if isinstance(value, dict) else value)
-
-    zh = lang == "zh"
-    labels = {
-        "about": "关于我" if zh else "About",
-        "experience": "科研与教育经历" if zh else "Experience & Education",
-        "publications": "学术论文" if zh else "Publications",
-        "projects": "科研项目" if zh else "Research Projects",
-        "patents": "发明专利" if zh else "Patents",
-        "skills": "研究与技术能力" if zh else "Research Skills",
-        "awards": "荣誉与奖励" if zh else "Honors & Awards",
-        "contact": "联系我" if zh else "Contact",
-    }
-
-    def section(key, content, extra=""):
-        return (
-            f'<section class="card border-0 shadow-sm bg-white section-card {extra}" '
-            f'id="{key}" aria-labelledby="{key}-title">'
-            '<div class="card-body p-4">'
-            f'<h2 class="section-title" id="{key}-title">{labels[key]}</h2>'
-            f'{content}</div></section>'
-        )
-
-    def external(url, label, css=""):
-        return f'<a class="{css}" href="{escape(url)}" target="_blank" rel="noopener noreferrer">{label}<span class="external-arrow" aria-hidden="true">↗</span></a>'
-
-    nav_labels = {
-        "about": "关于" if zh else "About",
-        "experience": "经历" if zh else "Experience",
-        "publications": "论文" if zh else "Papers",
-        "projects": "项目" if zh else "Projects",
-    }
-    nav = "".join(
-        f'<a class="nav-link" href="#{key}">{nav_labels[key]}</a>'
-        for key in ("about", "experience", "publications", "projects")
-    )
-    interests = "".join(
-        f'<div class="research-area"><h3>{text(item["label"])}</h3>'
-        f'<p>{text(item["text"])}</p><div class="topic-tags">'
-        + "".join(f'<span>{escape(tag)}</span>' for tag in item["tags"])
-        + '</div></div>'
-        for item in profile["interests"]
-    )
-    about = section(
-        "about",
-        f'<p class="intro-text">{text(profile["intro"])}</p>'
-        f'<p class="publication-summary">{text(profile["summary"])}</p>'
-        f'<div class="research-areas">{interests}</div>',
-    )
-
-    def timeline(items):
-        return '<ol class="timeline-list">' + "".join(
-            '<li class="timeline-item">'
-            f'<div class="item-heading"><h4>{text(item["institution"])}</h4>'
-            f'<span class="date">{escape(item["date"])}</span></div>'
-            f'<p class="item-degree">{text(item["degree"])}</p>'
-            f'<p class="item-department">{text(item["department"])}</p></li>'
-            for item in items
-        ) + '</ol>'
-
-    exp_title = "科研经历" if zh else "Research Experience"
-    edu_title = "教育背景" if zh else "Education"
-    experience = section(
-        "experience",
-        '<div class="row experience-columns"><div class="col-lg-6">'
-        f'<h3 class="subsection-title">{exp_title}</h3>{timeline(profile["experience"])}'
-        '</div><div class="col-lg-6">'
-        f'<h3 class="subsection-title">{edu_title}</h3>{timeline(profile["education"])}'
-        '</div></div>',
-    )
-
+def render(data, lang):
+    style = 'memphis'
+    zh = lang == 'zh'
+    def t(value):
+        return e(value[lang] if isinstance(value, dict) else value)
+    def label(chinese, english):
+        return chinese if zh else english
+    def ext(url, name, css=''):
+        return f'<a class="{css}" href="{e(url)}" target="_blank" rel="noopener noreferrer">{name}</a>'
+    name = t(data['name'])
+    nav = ''.join(f'<a href="#{key}">{label(cn,en)}</a>' for key,cn,en in [
+        ('about','概况','About'), ('experience','经历','Experience'),
+        ('publications','论文','Papers'), ('projects','项目','Projects'), ('contact','联系','Contact')
+    ])
+    counterpart = 'en.html' if zh else 'index.html'
+    mail = e(data['email'])
+    role = t(data['role'])
+    # The decorative motif represents two research areas, not quantitative data.
+    motif = '''<div class="memphis-art" aria-hidden="true"><span class="art-circle"></span><span class="art-dots"></span><svg class="art-wave" viewBox="0 0 180 34"><path d="M3 18 20 4 37 28 54 4 71 28 88 4 105 28 122 4 139 28 156 4 177 20" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/></svg><span class="art-pill"></span></div>'''
+    profile = f'''<aside class="identity-column"><div class="identity">
+      <p class="identity-role">{role}</p><h1>{name}</h1><p class="other-name">{t(data['alternate_name'])}</p>
+      <div class="identity-rule"></div><p class="identity-field">{t(data['field'])}</p>
+      <p class="identity-institution">{t(data['affiliation'])}</p>
+      <div class="identity-links"><a href="mailto:{mail}">{mail}</a>{ext('https://github.com/'+data['github'],'GitHub','github-link')}</div>
+      <button class="print-button" type="button" data-print>{label('打印 / 保存 PDF','Print / Save PDF')}</button>
+      {motif if style=='memphis' else ''}
+    </div><div class="side-note"><h2>{label('研究方向','Research interests')}</h2><p>{t(data['interests'][0]['label'])}</p><p>{t(data['interests'][1]['label'])}</p><a href="#contact">{label('学术交流与合作','Research collaborations')}</a></div></aside>'''
+    interests = ''.join(f'''<article class="research-area"><h3>{t(item['label'])}</h3><p>{t(item['text'])}</p></article>''' for item in data['interests'])
+    about = f'''<section class="block about" id="about" aria-labelledby="about-title"><div class="section-heading"><h2 id="about-title">{label('研究概况','Research profile')}</h2><span class="small-mark" aria-hidden="true"></span></div>
+      <p class="intro">{t(data['intro'])}</p><p class="summary">{t(data['summary'])}</p><div class="research-grid">{interests}</div></section>'''
+    def career(item, kind):
+        return f'''<li class="career-row"><span class="career-date">{e(item['date'])}</span><div class="career-description"><h3>{t(item['institution'])}</h3><p>{t(item['degree'])}</p><p class="secondary">{t(item['department'])}</p></div><span class="career-type">{kind}</span></li>'''
+    experience = f'''<section class="block experience" id="experience" aria-labelledby="experience-title"><div class="section-heading"><h2 id="experience-title">{label('科研与教育经历','Experience & education')}</h2></div><ol class="career-list">'''
+    experience += ''.join(career(item,label('科研','Research')) for item in data['experience'])
+    experience += ''.join(career(item,label('教育','Education')) for item in data['education'])
+    experience += '</ol></section>'
     def authors(value):
-        return '; '.join(
-            f'<strong>{escape(name.strip())}</strong>'
-            if name.strip() in ("Jing Wang", "Wang J") else escape(name.strip())
-            for name in value.split(';')
-        )
-
+        return '; '.join(f'<strong>{e(part.strip())}</strong>' if part.strip() in ['Jing Wang','Wang J'] else e(part.strip()) for part in value.split(';'))
     def paper(item):
-        doi = item.get("doi")
-        title = external(f'https://doi.org/{doi}', escape(item["title"]), "paper-title-link") if doi else escape(item["title"])
-        first = '<span class="first-author">' + ("第一作者" if zh else "First author") + '</span>' if item["first_author"] else ''
-        note = f'<p class="paper-note">{text(item["note"])}</p>' if item.get("note") else ''
-        link = external(f'https://doi.org/{doi}', "DOI", "paper-resource") if doi else external(
-            'https://pubmed.ncbi.nlm.nih.gov/?term=' + quote(item["title"]),
-            "PubMed 检索" if zh else "Find on PubMed", "paper-resource",
-        )
-        return (
-            '<article class="paper-item" data-publication>'
-            f'<div class="paper-year" aria-label="{item["year"]}">{item["year"]}</div>'
-            '<div class="paper-content">'
-            f'<h3>{title}</h3><p class="paper-authors">{authors(item["authors"])}</p>'
-            f'<p class="paper-journal"><cite>{escape(item["journal"])}</cite>'
-            f' · {item["year"]} · {escape(item["citation"])} {first}</p>'
-            f'{note}{link}</div></article>'
-        )
-
-    selected = sorted([p for p in profile["publications"] if p["first_author"]], key=lambda p: p["year"], reverse=True)
-    coauthored = sorted([p for p in profile["publications"] if not p["first_author"]], key=lambda p: p["year"], reverse=True)
-    other_label = f'合作作者论文（{len(coauthored)} 篇）' if zh else f'Co-authored publications ({len(coauthored)})'
-    pubs = section(
-        "publications",
-        '<p class="section-description">'
-        + ("第一作者论文 · 姓名加粗标示" if zh else "First-author publications · My name is shown in bold")
-        + '</p><div class="publication-list">'
-        + ''.join(paper(item) for item in selected)
-        + '</div><details class="other-publications"><summary>'
-        + other_label + '<span class="details-symbol" aria-hidden="true">+</span></summary>'
-        + '<div class="publication-list coauthor-list">'
-        + ''.join(paper(item) for item in coauthored)
-        + '</div></details>',
-    )
-
-    projects = section("projects", '<div class="project-list">' + ''.join(
-        '<article class="project-item">'
-        f'<div class="project-meta"><span class="role-badge {"principal" if i == 0 else ""}">{text(item["role"])}</span>'
-        f'<span class="date">{escape(item["date"])}</span></div>'
-        f'<h3>{text(item["title"])}</h3>'
-        f'<p>{text(item["funder"])}<span class="meta-separator">·</span>{text(item["amount"])}</p></article>'
-        for i, item in enumerate(profile["projects"])
-    ) + '</div>')
-
-    patents = section("patents", '<ol class="patent-list">' + ''.join(
-        f'<li><h3>{text(item["title"])}</h3><p>{text(item["inventors"])}</p>'
-        f'<p class="patent-meta"><span>{escape(item["number"])}</span>'
-        f'<span class="meta-separator">·</span>{escape(item["date"])}</p></li>'
-        for item in profile["patents"]
-    ) + '</ol>')
-
-    skills = section("skills", '<dl class="skills-list">' + ''.join(
-        f'<div><dt>{text(item["title"])}</dt><dd>{text(item["text"])}</dd></div>'
-        for item in profile["skills"]
-    ) + '</dl><p class="language-qualification">' + text(profile["language"]) + '</p>')
-
-    awards = section("awards", '<ul class="awards-list">' + ''.join(
-        f'<li><span>{text(item["name"])}</span><span class="date">{item["year"]}</span></li>'
-        for item in profile["awards"]
-    ) + '</ul>')
-    contact = section(
-        "contact",
-        '<p>' + ("欢迎就生物信息学与抗菌材料相关研究、学术合作及教学科研岗位与我联系。" if zh else "For research collaborations in bioinformatics and antimicrobial materials, or teaching and research opportunities, please contact me by email.")
-        + f'</p><a class="contact-email" href="mailto:{escape(profile["email"])}">{escape(profile["email"])}</a>',
-    )
-
-    menu = '导航菜单' if zh else 'Navigation menu'
-    print_label = '打印 / 保存 PDF' if zh else 'Print / Save PDF'
-    switch_file = 'en.html' if zh else 'index.html'
-    canonical = profile['url'] + ('/' if zh else '/en.html')
-    page_title = '王靖 | 生物信息学与抗菌材料' if zh else 'Jing Wang | Bioinformatics & Antimicrobial Materials'
-    description = profile['intro'][lang]
+        doi = item.get('doi')
+        title = ext('https://doi.org/'+doi,e(item['title']),'paper-title') if doi else e(item['title'])
+        resource = ext('https://doi.org/'+doi,'DOI','resource') if doi else ext('https://pubmed.ncbi.nlm.nih.gov/?term='+quote(item['title']),label('PubMed 检索','Find on PubMed'),'resource')
+        badge = f'<span class="first-author">{label("第一作者","First author")}</span>' if item['first_author'] else ''
+        return f'''<article class="paper" data-publication><span class="paper-year">{item['year']}</span><div class="paper-body"><h3>{title}</h3><p class="authors">{authors(item['authors'])}</p><p class="venue"><cite>{e(item['journal'])}</cite> · {item['year']} · {e(item['citation'])}</p><div class="paper-links">{badge}{resource}</div></div></article>'''
+    first = sorted([item for item in data['publications'] if item['first_author']], key=lambda item:item['year'],reverse=True)
+    other = sorted([item for item in data['publications'] if not item['first_author']], key=lambda item:item['year'],reverse=True)
+    publications = f'''<section class="block publications" id="publications" aria-labelledby="publications-title"><div class="section-heading"><h2 id="publications-title">{label('学术论文','Publications')}</h2><span class="heading-note">{label('第一作者论文','First-author papers')}</span></div>'''
+    publications += ''.join(paper(item) for item in first)
+    publications += f'<details class="more-papers"><summary>{label(f"合作作者论文 · {len(other)} 篇",f"Co-authored publications · {len(other)}")}<span aria-hidden="true">+</span></summary>'
+    publications += ''.join(paper(item) for item in other)+'</details></section>'
+    projects = f'''<section class="block projects" id="projects" aria-labelledby="projects-title"><div class="section-heading"><h2 id="projects-title">{label('科研项目','Research projects')}</h2></div><div class="project-list">'''
+    for item in data['projects']:
+        projects += f'''<article class="project"><div class="project-top"><span class="project-role">{t(item['role'])}</span><span class="date">{e(item['date'])}</span></div><h3>{t(item['title'])}</h3><p>{t(item['funder'])} · {t(item['amount'])}</p></article>'''
+    projects += '</div></section>'
+    patents = f'<section class="block patents" id="patents" aria-labelledby="patents-title"><div class="section-heading"><h2 id="patents-title">{label("发明专利","Patents")}</h2></div><ol class="patent-list">'
+    for item in data['patents']:
+        patents += f'<li><h3>{t(item["title"])}</h3><p>{t(item["inventors"])}</p><p class="secondary">{e(item["number"])} · {e(item["date"])}</p></li>'
+    patents += '</ol></section>'
+    skills = f'<section class="block skills" id="skills" aria-labelledby="skills-title"><div class="section-heading"><h2 id="skills-title">{label("研究与技术能力","Research skills")}</h2></div><dl>'
+    for item in data['skills']:
+        skills += f'<div><dt>{t(item["title"])}</dt><dd>{t(item["text"])}</dd></div>'
+    skills += f'</dl><p class="secondary">{t(data["language"])}</p></section>'
+    awards = f'<section class="block awards" id="awards" aria-labelledby="awards-title"><div class="section-heading"><h2 id="awards-title">{label("荣誉与奖励","Honors & awards")}</h2></div><ul>'
+    awards += ''.join(f'<li><span>{t(item["name"])}</span><span class="date">{item["year"]}</span></li>' for item in data['awards'])+'</ul></section>'
+    contact = f'''<section class="block contact" id="contact" aria-labelledby="contact-title"><div class="section-heading"><h2 id="contact-title">{label('保持联系','Get in touch')}</h2></div><p>{label('欢迎就生物信息学、抗菌材料相关研究及教学科研岗位与我联系。','For research collaborations in bioinformatics and antimicrobial materials, or teaching and research opportunities, please contact me by email.')}</p><a class="contact-link" href="mailto:{mail}">{mail}</a></section>'''
+    content = about + experience + publications + projects + patents + skills + awards + contact
+    canonical = data['url'] + ('/' if zh else '/en.html')
+    page_title = label('王靖 | 生物信息学与抗菌材料', 'Jing Wang | Bioinformatics & Antimicrobial Materials')
     person = {
         '@context': 'https://schema.org', '@type': 'Person',
-        'name': 'Jing Wang', 'alternateName': '王靖', 'url': profile['url'],
-        'email': 'mailto:' + profile['email'],
-        'alumniOf': [ {'@type': 'CollegeOrUniversity', 'name': 'Inner Mongolia University'},
-                      {'@type': 'CollegeOrUniversity', 'name': 'Heilongjiang University of Science and Technology'}],
+        'name': 'Jing Wang', 'alternateName': '王靖', 'url': data['url'],
+        'email': 'mailto:' + data['email'],
+        'alumniOf': [{'@type': 'CollegeOrUniversity', 'name': 'Inner Mongolia University'},
+                     {'@type': 'CollegeOrUniversity', 'name': 'Heilongjiang University of Science and Technology'}],
         'knowsAbout': ['Bioinformatics', 'Multi-omics', 'Antimicrobial materials'],
-        'sameAs': ['https://github.com/' + profile['github']],
+        'sameAs': ['https://github.com/' + data['github']],
     }
-    template = Template((ROOT / 'src/page.html').read_text())
-    return template.substitute(
-        page_lang='zh-CN' if zh else 'en', page_title=escape(page_title),
-        description=escape(description), canonical=escape(canonical),
+    return Template((ROOT / 'src/page.html').read_text()).substitute(
+        page_lang='zh-CN' if zh else 'en', page_title=e(page_title),
+        description=t(data['intro']), canonical=e(canonical),
         structured_data=json.dumps(person, ensure_ascii=False).replace('</', '<\\/'),
-        nav_links=nav, name=text(profile['name']), alternate_name=text(profile['alternate_name']),
-        field=text(profile['field']), role=text(profile['role']), affiliation=text(profile['affiliation']),
-        email=escape(profile['email']), github=escape(profile['github']),
-        switch_file=switch_file, switch_label='EN' if zh else '中文',
-        switch_lang='en' if zh else 'zh-CN',
-        switch_description='Switch to English' if zh else '切换为中文',
-        menu=menu, print_label=print_label,
-        side_label='个人简介' if zh else 'Profile',
-        research_label='研究方向' if zh else 'Research Interests',
-        sidebar_interests=''.join(f'<li>{text(i["label"])}</li>' for i in profile['interests']),
-        sidebar_contact='邮箱联系' if zh else 'Email',
-        content=about + experience + pubs + projects + patents + skills + awards + contact,
-        skip='跳至正文' if zh else 'Skip to content',
-        back_top='返回顶部' if zh else 'Back to top',
-        updated=('更新于 2026 年 10 月' if zh else 'Updated October 2026'),
-        year=profile['updated'][:4],
-        template_credit='基于' if zh else 'Based on',
+        skip=label('跳至正文', 'Skip to content'),
+        home_label=label('王靖的个人主页', 'Jing Wang personal homepage'),
+        home_icon=HOME, name=name, nav_links=nav,
+        menu=label('主页导航', 'Main navigation'),
+        switch_file=counterpart, switch_lang='en' if zh else 'zh-CN',
+        switch_description=label('Switch to English', '切换为中文'),
+        switch_label=label('EN', '中文'), identity=profile, content=content,
+        year=e(data['updated'][:4]), back_top=label('返回顶部', 'Back to top'),
+        template_credit=label('基于', 'Based on'),
     )
 
 

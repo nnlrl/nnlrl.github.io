@@ -1,6 +1,6 @@
 # Jing Wang · 王靖
 
-基于 [luost26/academic-homepage](https://github.com/luost26/academic-homepage) 制作的单页学术主页，保留原模板的 Bootstrap 网格与左侧简介布局。顶部终端导航、日夜配色、星点背景和字体参照 [Yiqian Wu 的主页](https://onethousandwu.com/index.html)。
+基于 [luost26/academic-homepage](https://github.com/luost26/academic-homepage) 定制的单页学术主页。使用用户选定的孟菲斯风格，奶白底色搭配黄色、珊瑚粉、薄荷绿与几何装饰；顶栏使用带 Home 标记的黄色文件夹。
 
 免费网址：<https://nnlrl.github.io/>。中文版为 `index.html`，英文版为 `en.html`。
 
@@ -20,7 +20,7 @@ python3 scripts/build_site.py
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-打开 <http://127.0.0.1:8765/>。页面支持页内导航、中英文切换、日夜主题、背景动效开关、展开合作论文和“打印 / 保存 PDF”。默认夜间主题，日间显示 24px 细网格背景。主题和动效偏好会在当前浏览器保存；系统减少动态效果时关闭动画。
+打开 <http://127.0.0.1:8765/>。页面支持页内导航、中英文切换、展开合作论文和“打印 / 保存 PDF”。手机使用单列布局，打印时展开全部论文。
 
 ## GitHub Pages
 
@@ -34,23 +34,19 @@ python3 -m http.server 8765 --bind 127.0.0.1
 - 专利保留简历中的名称、发明人和申请号，不依据申请号推断授权状态。英文专利名为内容翻译。
 - 不展示未经再次核验的影响因子、期刊分区、引用次数或在审论文。
 - 公开页面展示工作邮箱和 GitHub；没有加入出生日期、民族、手机号，也没有上传原始简历文件。
-- 没有提供个人照片，因此使用姓名缩写作为标识。
+- 没有提供个人照片，因此使用姓名作为标识。
 - 页面上的“打印 / 保存 PDF”调用浏览器打印功能，不是下载一个另行制作的 PDF 文件。
 
 ## 模板来源与许可
 
-`assets/css/global.css` 来自原模板，保留其卡片和导航基础样式。Bootstrap 4.6.0 的发行样式本地存放在 `assets/vendor/bootstrap.min.css`，保留文件头许可声明。站点适配内容保留原模板 MIT 许可和页脚来源链接。
+正式页面使用 `assets/css/site-base.css` 和 `assets/css/memphis.css`，不依赖前端框架。黄色文件夹为本站绘制的 SVG，位于 `assets/images/home-folder-yellow.svg`。站点保留原模板 MIT 许可和页脚来源链接。
 
 原模板版权：Copyright (c) 2024 Shitong Luo。详见 `LICENSE`。
 
-## 字体与样式参考
-
-2026-10-30 按用户要求匹配参考站的顶部栏、背景和字体：
+## 字体
 
 - 正文：Hanken Grotesk。
 - 主标题：Bricolage Grotesque。
-- 导航和辅助标签：IBM Plex Mono。
-- 经历栏小标题：Special Elite。
 - 中文字形由系统中文字体补充。
 
-字体文件来自参考站公开的 `assets/fonts/`，对应声明见其 `assets/fonts.css?v=18`。字体的 SIL Open Font License 或 Apache-2.0 许可文本随文件保留在 `assets/fonts/`。配色参数参考其 `assets/site.css?v=18`；本站只适配导航、字体和背景，不复制参考站的个人资料、照片或作品。
+字体在站点本地提供，文件来自此前参考的 [Yiqian Wu 主页](https://onethousandwu.com/index.html) 公开字体目录。字体许可文本随文件保留在 `assets/fonts/`。旧版样式和设计 demo 仍留在本地供参考，正式页面不加载它们。
