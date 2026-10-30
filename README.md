@@ -1,6 +1,6 @@
 # Jing Wang · 王靖
 
-基于 [luost26/academic-homepage](https://github.com/luost26/academic-homepage) 定制的单页学术主页。使用用户选定的孟菲斯风格，奶白底色搭配黄色、珊瑚粉、薄荷绿与几何装饰；顶栏使用带 Home 标记的黄色文件夹。大区块统一左上圆角和右下投影；嵌套小框使用左上与右下圆角、2px 虚线边框，无投影。
+基于 [luost26/academic-homepage](https://github.com/luost26/academic-homepage) 定制的单页学术主页。使用用户选定的孟菲斯风格，奶白底色搭配黄色、珊瑚粉、薄荷绿与几何装饰；顶栏使用带 Home 标记的黄色文件夹。主体保留原孟菲斯版的圆角和实线框样式；仅两个研究方向框使用左上 16px 圆角、2px 虚线边框与右侧、下侧 4px 投影。
 
 免费网址：<https://nnlrl.github.io/>。默认首页 `index.html` 为英文，中文版为 `zh.html`；`en.html` 保留为英文兼容入口。
 
