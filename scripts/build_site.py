@@ -34,6 +34,7 @@ def render(data, lang):
     # The decorative motif represents two research areas, not quantitative data.
     motif = '''<div class="memphis-art" aria-hidden="true"><span class="art-circle"></span><span class="art-dots"></span><svg class="art-wave" viewBox="0 0 180 34"><path d="M3 18 20 4 37 28 54 4 71 28 88 4 105 28 122 4 139 28 156 4 177 20" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/></svg><span class="art-pill"></span></div>'''
     profile = f'''<aside class="identity-column"><div class="identity">
+      <img class="profile-avatar" src="assets/images/jing-wang.jpg?v=20261031-avatar" alt="{label('王靖的照片', 'Portrait of Jing Wang')}" width="160" height="160" fetchpriority="high">
       <p class="identity-role">{role}</p><h1>{name}</h1><p class="other-name">{t(data['alternate_name'])}</p>
       <div class="identity-rule"></div><p class="identity-field">{t(data['field'])}</p>
       <p class="identity-institution">{t(data['affiliation'])}</p>
@@ -85,6 +86,7 @@ def render(data, lang):
     person = {
         '@context': 'https://schema.org', '@type': 'Person',
         'name': 'Jing Wang', 'alternateName': '王靖', 'url': data['url'],
+        'image': data['url'] + '/assets/images/jing-wang.jpg',
         'email': 'mailto:' + data['email'],
         'alumniOf': [{'@type': 'CollegeOrUniversity', 'name': 'Inner Mongolia University'},
                      {'@type': 'CollegeOrUniversity', 'name': 'Heilongjiang University of Science and Technology'}],
@@ -96,7 +98,7 @@ def render(data, lang):
         description=t(data['intro']), canonical=e(canonical),
         structured_data=json.dumps(person, ensure_ascii=False).replace('</', '<\\/'),
         skip=label('跳至正文', 'Skip to content'),
-        home_label=label('王靖的个人主页', 'Jing Wang personal homepage'),
+        home_label=label('返回首页', 'Home'),
         home_icon=HOME, name=name, nav_links=nav,
         menu=label('主页导航', 'Main navigation'),
         switch_file=counterpart, switch_lang='en' if zh else 'zh-CN',
