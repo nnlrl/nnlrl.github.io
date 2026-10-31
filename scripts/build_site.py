@@ -30,12 +30,11 @@ def render(data, lang):
     ])
     counterpart = 'index.html' if zh else 'zh.html'
     mail = e(data['email'])
-    role = t(data['role'])
     # The decorative motif represents two research areas, not quantitative data.
     motif = '''<div class="memphis-art" aria-hidden="true"><span class="art-circle"></span><span class="art-dots"></span><svg class="art-wave" viewBox="0 0 180 34"><path d="M3 18 20 4 37 28 54 4 71 28 88 4 105 28 122 4 139 28 156 4 177 20" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/></svg><span class="art-pill"></span></div>'''
     profile = f'''<aside class="identity-column"><div class="identity">
       <img class="profile-avatar" src="assets/images/jing-wang.jpg?v=20261031-avatar" alt="{label('王靖的照片', 'Portrait of Jing Wang')}" width="160" height="160" fetchpriority="high">
-      <p class="identity-role">{role}</p><h1>{name}</h1><p class="other-name">{t(data['alternate_name'])}</p>
+      <h1>{name}</h1><p class="other-name">{t(data['alternate_name'])}</p>
       <div class="identity-rule"></div><p class="identity-field">{t(data['field'])}</p>
       <p class="identity-institution">{t(data['affiliation'])}</p>
       <div class="identity-links"><a href="mailto:{mail}">{mail}</a>{ext('https://github.com/'+data['github'],'GitHub','github-link')}</div>
