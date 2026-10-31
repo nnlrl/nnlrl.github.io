@@ -12,7 +12,7 @@ h1,h2,h3,dt { font-family:var(--heading-font); font-weight:500; }
 .profile-avatar { display:block; width:160px; max-width:100%; height:auto; aspect-ratio:1; object-fit:cover; object-position:center 62%; margin:0 auto 22px; border:2px solid var(--line); }
 .identity-role { display:inline-flex; align-items:center; background:#fbfaf7; border:1.5px solid var(--line); padding:7px 10px; font-size:12px; line-height:1.5; margin-bottom:30px; }
 .identity h1 { font-size:72px; letter-spacing:-.055em; }
-html[lang="en"] .identity h1 { font-size:52px; font-weight:500; letter-spacing:-.035em; }
+html[lang="en"] .identity h1 { font-family:var(--mono-font); font-size:44px; font-weight:500; letter-spacing:-.035em; }
 .other-name { font-family:var(--reading-font); font-size:27px; font-weight:500; }
 .identity-rule { background:var(--line); height:2px; margin:23px 0; }
 .identity-field { font-size:17px; }
@@ -77,14 +77,14 @@ html[lang="en"] .identity h1 { font-size:52px; font-weight:500; letter-spacing:-
 @media(max-width:1050px) {
   .identity { padding-inline:22px; }
   .identity h1 { font-size:64px; }
-  html[lang="en"] .identity h1 { font-size:46px; }
+  html[lang="en"] .identity h1 { font-size:38px; }
   .block { padding:24px; }
   .career-row { grid-template-columns:minmax(0,1fr) max-content; gap:10px 16px; }
   .career-date { grid-column:1; grid-row:1; align-self:center; }
   .career-description { grid-column:1 / -1; grid-row:2; }
   .career-type { display:inline-flex; grid-column:2; grid-row:1; }
 }
-@media(max-width:760px) { .page-grid { gap:30px; } .identity { padding:27px 25px 83px; box-shadow:5px 5px 0 var(--line); } .identity-role { margin-bottom:20px; } .identity h1 { font-size:67px; } html[lang="en"] .identity h1 { font-size:clamp(42px,14vw,56px); } .other-name { margin-bottom:18px; } .identity-rule { margin:20px 0; } .identity-institution { margin-bottom:15px; } .identity-field { font-size:18px; max-width:250px; } .print-button { max-width:100%; margin-top:21px; } .block { padding:24px 21px; box-shadow:4px 4px 0 var(--line); } .section-heading h2 { font-size:23px; } .research-area p { font-size:15px; } .research-grid { gap:15px; } .heading-note { font-size:12px; } .paper { grid-template-columns:1fr; gap:8px; } .paper-year { font-size:13px; } .career-row { gap:7px; } .contact-link { font-size:17px; } }
+@media(max-width:760px) { .page-grid { gap:30px; } .identity { padding:27px 25px 83px; box-shadow:5px 5px 0 var(--line); } .identity-role { margin-bottom:20px; } .identity h1 { font-size:67px; } html[lang="en"] .identity h1 { font-size:clamp(38px,12vw,48px); } .other-name { margin-bottom:18px; } .identity-rule { margin:20px 0; } .identity-institution { margin-bottom:15px; } .identity-field { font-size:18px; max-width:250px; } .print-button { max-width:100%; margin-top:21px; } .block { padding:24px 21px; box-shadow:4px 4px 0 var(--line); } .section-heading h2 { font-size:23px; } .research-area p { font-size:15px; } .research-grid { gap:15px; } .heading-note { font-size:12px; } .paper { grid-template-columns:1fr; gap:8px; } .paper-year { font-size:13px; } .career-row { gap:7px; } .contact-link { font-size:17px; } }
 
 @media(max-width:400px) {
   .page-nav { gap:6px; }

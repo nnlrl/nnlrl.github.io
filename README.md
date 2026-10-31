@@ -46,7 +46,8 @@ python3 -m http.server 8765 --bind 127.0.0.1
 ## 字体
 
 - 正文：Hanken Grotesk。
-- 主标题与论文标题：Bricolage Grotesque。
+- 英文姓名：IBM Plex Mono，与顶栏使用同一字体。
+- 其他主标题与论文标题：Bricolage Grotesque。
 - 章节标题：Special Elite。
 - 导航、日期与辅助标签：IBM Plex Mono。
 - 中文字形由系统中文字体补充。
